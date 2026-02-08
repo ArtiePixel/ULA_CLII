@@ -1,0 +1,412 @@
+// Copyright (C) 1991-2013 Altera Corporation
+// Your use of Altera Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Altera Program License 
+// Subscription Agreement, Altera MegaCore Function License 
+// Agreement, or other applicable license agreement, including, 
+// without limitation, that your use is for the sole purpose of 
+// programming logic devices manufactured by Altera and sold by 
+// Altera or its authorized distributors.  Please refer to the 
+// applicable agreement for further details.
+
+// *****************************************************************************
+// This file contains a Verilog test bench with test vectors .The test vectors  
+// are exported from a vector file in the Quartus Waveform Editor and apply to  
+// the top level entity of the current Quartus project .The user can use this   
+// testbench to simulate his design using a third-party simulation tool .       
+// *****************************************************************************
+// Generated on "02/08/2026 17:42:11"
+                                                                        
+// Verilog Self-Checking Test Bench (with test vectors) for design :    ULAula
+// 
+// Simulation tool : 3rd Party
+// 
+
+`timescale 1 ps/ 1 ps
+module ULAula_vlg_sample_tst(
+	A,
+	B,
+	R,
+	S,
+	sampler_tx
+);
+input [4:0] A;
+input [4:0] B;
+input  R;
+input [3:0] S;
+output sampler_tx;
+
+reg sample;
+time current_time;
+always @(A or B or R or S)
+                                                                                
+begin                                                 
+ if ($realtime > 0)                                   
+ begin                                                
+	if ($realtime == 0 || $realtime != current_time)  
+	begin									          
+		if (sample === 1'bx)                          
+			sample = 0;                               
+		else                                          
+			sample = ~sample;                         
+	end										          
+	current_time = $realtime;					      
+ end                                                  
+end                                                   
+
+assign sampler_tx = sample;
+endmodule
+
+module ULAula_vlg_check_tst (
+	Cout,
+	O,
+	Zero,
+	sampler_rx
+);
+input  Cout;
+input [4:0] O;
+input  Zero;
+input sampler_rx;
+
+reg  Cout_expected;
+reg [4:0] O_expected;
+reg  Zero_expected;
+
+reg  Cout_prev;
+reg [4:0] O_prev;
+reg  Zero_prev;
+
+reg  Cout_expected_prev;
+reg [4:0] O_expected_prev;
+reg  Zero_expected_prev;
+
+reg  last_Cout_exp;
+reg [4:0] last_O_exp;
+reg  last_Zero_exp;
+
+reg trigger;
+
+integer i;
+integer nummismatches;
+
+reg [1:3] on_first_change ;
+
+
+initial
+begin
+trigger = 0;
+i = 0;
+nummismatches = 0;
+on_first_change = 3'b1;
+end
+
+// update real /o prevs
+
+always @(trigger)
+begin
+	Cout_prev = Cout;
+	O_prev = O;
+	Zero_prev = Zero;
+end
+
+// update expected /o prevs
+
+always @(trigger)
+begin
+	Cout_expected_prev = Cout_expected;
+	O_expected_prev = O_expected;
+	Zero_expected_prev = Zero_expected;
+end
+
+
+
+// expected Cout
+initial
+begin
+	Cout_expected = 1'b0;
+end 
+// expected O[ 4 ]
+initial
+begin
+	O_expected[4] = 1'bX;
+end 
+// expected O[ 3 ]
+initial
+begin
+	O_expected[3] = 1'bX;
+end 
+// expected O[ 2 ]
+initial
+begin
+	O_expected[2] = 1'bX;
+end 
+// expected O[ 1 ]
+initial
+begin
+	O_expected[1] = 1'bX;
+end 
+// expected O[ 0 ]
+initial
+begin
+	O_expected[0] = 1'bX;
+end 
+
+// expected Zero
+initial
+begin
+	Zero_expected = 1'b0;
+end 
+// generate trigger
+always @(Cout_expected or Cout or O_expected or O or Zero_expected or Zero)
+begin
+	trigger <= ~trigger;
+end
+
+always @(posedge sampler_rx or negedge sampler_rx)
+begin
+`ifdef debug_tbench
+	$display("Scanning pattern %d @time = %t",i,$realtime );
+	i = i + 1;
+	$display("| expected Cout = %b | expected O = %b | expected Zero = %b | ",Cout_expected_prev,O_expected_prev,Zero_expected_prev);
+	$display("| real Cout = %b | real O = %b | real Zero = %b | ",Cout_prev,O_prev,Zero_prev);
+`endif
+	if (
+		( Cout_expected_prev !== 1'bx ) && ( Cout_prev !== Cout_expected_prev )
+		&& ((Cout_expected_prev !== last_Cout_exp) ||
+			on_first_change[1])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port Cout :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", Cout_expected_prev);
+		$display ("     Real value = %b", Cout_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[1] = 1'b0;
+		last_Cout_exp = Cout_expected_prev;
+	end
+	if (
+		( O_expected_prev[0] !== 1'bx ) && ( O_prev[0] !== O_expected_prev[0] )
+		&& ((O_expected_prev[0] !== last_O_exp[0]) ||
+			on_first_change[2])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port O[0] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", O_expected_prev);
+		$display ("     Real value = %b", O_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[2] = 1'b0;
+		last_O_exp[0] = O_expected_prev[0];
+	end
+	if (
+		( O_expected_prev[1] !== 1'bx ) && ( O_prev[1] !== O_expected_prev[1] )
+		&& ((O_expected_prev[1] !== last_O_exp[1]) ||
+			on_first_change[2])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port O[1] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", O_expected_prev);
+		$display ("     Real value = %b", O_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[2] = 1'b0;
+		last_O_exp[1] = O_expected_prev[1];
+	end
+	if (
+		( O_expected_prev[2] !== 1'bx ) && ( O_prev[2] !== O_expected_prev[2] )
+		&& ((O_expected_prev[2] !== last_O_exp[2]) ||
+			on_first_change[2])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port O[2] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", O_expected_prev);
+		$display ("     Real value = %b", O_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[2] = 1'b0;
+		last_O_exp[2] = O_expected_prev[2];
+	end
+	if (
+		( O_expected_prev[3] !== 1'bx ) && ( O_prev[3] !== O_expected_prev[3] )
+		&& ((O_expected_prev[3] !== last_O_exp[3]) ||
+			on_first_change[2])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port O[3] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", O_expected_prev);
+		$display ("     Real value = %b", O_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[2] = 1'b0;
+		last_O_exp[3] = O_expected_prev[3];
+	end
+	if (
+		( O_expected_prev[4] !== 1'bx ) && ( O_prev[4] !== O_expected_prev[4] )
+		&& ((O_expected_prev[4] !== last_O_exp[4]) ||
+			on_first_change[2])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port O[4] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", O_expected_prev);
+		$display ("     Real value = %b", O_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[2] = 1'b0;
+		last_O_exp[4] = O_expected_prev[4];
+	end
+	if (
+		( Zero_expected_prev !== 1'bx ) && ( Zero_prev !== Zero_expected_prev )
+		&& ((Zero_expected_prev !== last_Zero_exp) ||
+			on_first_change[3])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port Zero :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", Zero_expected_prev);
+		$display ("     Real value = %b", Zero_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[3] = 1'b0;
+		last_Zero_exp = Zero_expected_prev;
+	end
+
+	trigger <= ~trigger;
+end
+initial 
+
+begin 
+$timeformat(-12,3," ps",6);
+#1000000;
+if (nummismatches > 0)
+	$display ("%d mismatched vectors : Simulation failed !",nummismatches);
+else
+	$display ("Simulation passed !");
+$finish;
+end 
+endmodule
+
+module ULAula_vlg_vec_tst();
+// constants                                           
+// general purpose registers
+reg [4:0] A;
+reg [4:0] B;
+reg R;
+reg [3:0] S;
+// wires                                               
+wire Cout;
+wire [4:0] O;
+wire Zero;
+
+wire sampler;                             
+
+// assign statements (if any)                          
+ULAula i1 (
+// port map - connection between master ports and signals/registers   
+	.A(A),
+	.B(B),
+	.Cout(Cout),
+	.O(O),
+	.R(R),
+	.S(S),
+	.Zero(Zero)
+);
+// A[ 4 ]
+initial
+begin
+	A[4] = 1'b1;
+end 
+// A[ 3 ]
+initial
+begin
+	A[3] = 1'b1;
+end 
+// A[ 2 ]
+initial
+begin
+	A[2] = 1'b1;
+end 
+// A[ 1 ]
+initial
+begin
+	A[1] = 1'b1;
+end 
+// A[ 0 ]
+initial
+begin
+	A[0] = 1'b1;
+end 
+// B[ 4 ]
+initial
+begin
+	B[4] = 1'b0;
+end 
+// B[ 3 ]
+initial
+begin
+	B[3] = 1'b0;
+end 
+// B[ 2 ]
+initial
+begin
+	B[2] = 1'b0;
+end 
+// B[ 1 ]
+initial
+begin
+	B[1] = 1'b0;
+end 
+// B[ 0 ]
+initial
+begin
+	B[0] = 1'b1;
+end 
+
+// R
+initial
+begin
+	R = 1'b1;
+end 
+// S[ 3 ]
+initial
+begin
+	S[3] = 1'b0;
+	S[3] = #400000 1'b1;
+	S[3] = #400000 1'b0;
+end 
+// S[ 2 ]
+initial
+begin
+	repeat(2)
+	begin
+		S[2] = 1'b0;
+		S[2] = #200000 1'b1;
+		# 200000;
+	end
+	S[2] = 1'b0;
+end 
+// S[ 1 ]
+always
+begin
+	S[1] = 1'b0;
+	S[1] = #100000 1'b1;
+	#100000;
+end 
+// S[ 0 ]
+always
+begin
+	S[0] = 1'b0;
+	S[0] = #50000 1'b1;
+	#50000;
+end 
+
+ULAula_vlg_sample_tst tb_sample (
+	.A(A),
+	.B(B),
+	.R(R),
+	.S(S),
+	.sampler_tx(sampler)
+);
+
+ULAula_vlg_check_tst tb_out(
+	.Cout(Cout),
+	.O(O),
+	.Zero(Zero),
+	.sampler_rx(sampler)
+);
+endmodule
+
