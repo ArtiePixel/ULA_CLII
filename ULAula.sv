@@ -1,7 +1,7 @@
 module ULAula(
-  input  logic [3:0] S,
-  input  logic [5:0] A, B,
-  input  logic       R,
+  input  [3:0] S,
+  input  [5:0] A, B,
+  input       R,
   output logic [5:0] O,
   output logic       Cout,
   output logic       Zero
@@ -38,7 +38,6 @@ module ULAula(
         4'b1101: tmp = {1'b0, ~(A & B)};
         4'b1110: tmp = {1'b0, A};
         4'b1111: tmp = {1'b0, B};
-        default: tmp = '0;
       endcase
 
       O    = tmp[5:0];
