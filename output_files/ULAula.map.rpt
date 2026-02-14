@@ -1,6 +1,6 @@
 Analysis & Synthesis report for ULAula
-Sun Feb 08 17:46:58 2026
-Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+Sun Feb 08 18:27:11 2026
+Quartus II 32-bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
 ---------------------
@@ -9,13 +9,14 @@ Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edit
   1. Legal Notice
   2. Analysis & Synthesis Summary
   3. Analysis & Synthesis Settings
-  4. Analysis & Synthesis Source Files Read
-  5. Analysis & Synthesis Resource Usage Summary
-  6. Analysis & Synthesis Resource Utilization by Entity
-  7. General Register Statistics
-  8. Multiplexer Restructuring Statistics (Restructuring Performed)
-  9. Elapsed Time Per Partition
- 10. Analysis & Synthesis Messages
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. General Register Statistics
+  9. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 10. Elapsed Time Per Partition
+ 11. Analysis & Synthesis Messages
 
 
 
@@ -41,14 +42,14 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                          ;
 +-------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status         ; Successful - Sun Feb 08 17:46:58 2026           ;
-; Quartus II 64-Bit Version           ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
+; Analysis & Synthesis Status         ; Successful - Sun Feb 08 18:27:11 2026           ;
+; Quartus II 32-bit Version           ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                       ; ULAula                                          ;
 ; Top-level Entity Name               ; ULAula                                          ;
 ; Family                              ; Cyclone V                                       ;
 ; Logic utilization (in ALMs)         ; N/A                                             ;
 ; Total registers                     ; 0                                               ;
-; Total pins                          ; 22                                              ;
+; Total pins                          ; 25                                              ;
 ; Total virtual pins                  ; 0                                               ;
 ; Total block memory bits             ; 0                                               ;
 ; Total DSP Blocks                    ; 0                                               ;
@@ -150,13 +151,24 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------+--------------------+--------------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                 ;
-+----------------------------------+-----------------+------------------------------+------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path             ; Library ;
-+----------------------------------+-----------------+------------------------------+------------------------------------------+---------+
-; ULAula.sv                        ; yes             ; User SystemVerilog HDL File  ; C:/Users/xarope/Desktop/ULAula/ULAula.sv ;         ;
-+----------------------------------+-----------------+------------------------------+------------------------------------------+---------+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 12     ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                         ;
++----------------------------------+-----------------+------------------------------+--------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                     ; Library ;
++----------------------------------+-----------------+------------------------------+--------------------------------------------------+---------+
+; ULAula.sv                        ; yes             ; User SystemVerilog HDL File  ; C:/Users/Laisv/Downloads/ULAula/ULAula/ULAula.sv ;         ;
++----------------------------------+-----------------+------------------------------+--------------------------------------------------+---------+
 
 
 +----------------------------------------------------------+
@@ -164,23 +176,23 @@ applicable agreement for further details.
 +---------------------------------------------+------------+
 ; Resource                                    ; Usage      ;
 +---------------------------------------------+------------+
-; Estimate of Logic utilization (ALMs needed) ; 37         ;
+; Estimate of Logic utilization (ALMs needed) ; 42         ;
 ;                                             ;            ;
-; Combinational ALUT usage for logic          ; 61         ;
+; Combinational ALUT usage for logic          ; 70         ;
 ;     -- 7 input functions                    ; 0          ;
-;     -- 6 input functions                    ; 12         ;
-;     -- 5 input functions                    ; 2          ;
-;     -- 4 input functions                    ; 16         ;
-;     -- <=3 input functions                  ; 31         ;
+;     -- 6 input functions                    ; 14         ;
+;     -- 5 input functions                    ; 1          ;
+;     -- 4 input functions                    ; 18         ;
+;     -- <=3 input functions                  ; 37         ;
 ;                                             ;            ;
 ; Dedicated logic registers                   ; 0          ;
 ;                                             ;            ;
-; I/O pins                                    ; 22         ;
+; I/O pins                                    ; 25         ;
 ; Total DSP Blocks                            ; 0          ;
-; Maximum fan-out node                        ; S[1]~input ;
-; Maximum fan-out                             ; 23         ;
-; Total fan-out                               ; 242        ;
-; Average fan-out                             ; 2.30       ;
+; Maximum fan-out node                        ; S[2]~input ;
+; Maximum fan-out                             ; 25         ;
+; Total fan-out                               ; 277        ;
+; Average fan-out                             ; 2.31       ;
 +---------------------------------------------+------------+
 
 
@@ -189,7 +201,7 @@ applicable agreement for further details.
 +----------------------------+-------------------+--------------+-------------------+------------+------+--------------+---------------------+--------------+
 ; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name ; Library Name ;
 +----------------------------+-------------------+--------------+-------------------+------------+------+--------------+---------------------+--------------+
-; |ULAula                    ; 61 (61)           ; 0 (0)        ; 0                 ; 0          ; 22   ; 0            ; |ULAula             ; work         ;
+; |ULAula                    ; 70 (70)           ; 0 (0)        ; 0                 ; 0          ; 25   ; 0            ; |ULAula             ; work         ;
 +----------------------------+-------------------+--------------+-------------------+------------+------+--------------+---------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -214,9 +226,9 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-; 4:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; No         ; |ULAula|Add0               ;
-; 4:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; No         ; |ULAula|Add0               ;
-; 16:1               ; 5 bits    ; 50 LEs        ; 40 LEs               ; 10 LEs                 ; No         ; |ULAula|Mux5               ;
+; 14:1               ; 6 bits    ; 54 LEs        ; 48 LEs               ; 6 LEs                  ; No         ; |ULAula|Mux6               ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; No         ; |ULAula|Add0               ;
+; 4:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |ULAula|Add0               ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
 
 
@@ -225,7 +237,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:01     ;
+; Top            ; 00:00:00     ;
 +----------------+--------------+
 
 
@@ -233,9 +245,9 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; Analysis & Synthesis Messages ;
 +-------------------------------+
 Info: *******************************************************************
-Info: Running Quartus II 64-Bit Analysis & Synthesis
+Info: Running Quartus II 32-bit Analysis & Synthesis
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Sun Feb 08 17:46:52 2026
+    Info: Processing started: Sun Feb 08 18:27:10 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off ULAula -c ULAula
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 1 design units, including 1 entities, in source file ulaula.sv
@@ -244,14 +256,14 @@ Info (12127): Elaborating entity "ULAula" for the top level hierarchy
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 83 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 15 input pins
-    Info (21059): Implemented 7 output pins
-    Info (21061): Implemented 61 logic cells
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 4627 megabytes
-    Info: Processing ended: Sun Feb 08 17:46:58 2026
-    Info: Elapsed time: 00:00:06
-    Info: Total CPU time (on all processors): 00:00:03
+Info (21057): Implemented 95 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 17 input pins
+    Info (21059): Implemented 8 output pins
+    Info (21061): Implemented 70 logic cells
+Info: Quartus II 32-bit Analysis & Synthesis was successful. 0 errors, 1 warning
+    Info: Peak virtual memory: 405 megabytes
+    Info: Processing ended: Sun Feb 08 18:27:11 2026
+    Info: Elapsed time: 00:00:01
+    Info: Total CPU time (on all processors): 00:00:01
 
 

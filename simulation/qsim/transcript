@@ -18,12 +18,6 @@
 # Loading work.ULAula
 # Loading work.ULAula_vlg_sample_tst
 # Loading work.ULAula_vlg_check_tst
-# ERROR! Vector Mismatch for output port Cout :: @time = 50000.000 ps
-#      Expected value = 0
-#      Real value = 1
-# ERROR! Vector Mismatch for output port Zero :: @time = 50000.000 ps
-#      Expected value = 0
-#      Real value = 1
-#           2 mismatched vectors : Simulation failed !
-# ** Note: $finish    : ULAula.vt(279)
+# Simulation passed !
+# ** Note: $finish    : ULAula.vt(297)
 #    Time: 1 us  Iteration: 0  Instance: /ULAula_vlg_vec_tst/tb_out
